@@ -12,6 +12,7 @@ r"""Extracts import dependencies from a Jsonnet file
 Note: Imports spanning multiple lines won't be found by this script.
 
 """
+import sys
 import fileinput
 import re
 
@@ -88,10 +89,15 @@ def extract_imports(string):
 
 # - Command line
 
-if __name__ == "__main__":
-    for line in fileinput.input():
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv[1:]
+    for line in fileinput.input(argv):
         # UX improvement by allowing commented imports during development
         if line.strip().startswith("#") or line.strip().startswith("//"):
             continue
         for string in extract_imports(line):
             print(string)
+
+if __name__ == "__main__":
+    main()
