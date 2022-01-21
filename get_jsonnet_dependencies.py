@@ -75,10 +75,12 @@ IMPORT_PATTERN = re.compile(
 def extract_imports(string: str):
     """Yields all import strings found
 
+    - string is the string to search
+
         >>> list(extract_imports("import 'sus'"))
         ['sus']
-        >>> list(extract_imports("import 'sus' import @'s\e''us'"))
-        ['sus', "s\\e'us"]
+        >>> list(extract_imports("import 'sus' import @'s\e\t''us'"))
+        ['sus', "s\\e\t'us"]
 
     """
     for match in IMPORT_PATTERN.finditer(string):
@@ -91,8 +93,14 @@ def extract_imports(string: str):
 # - Command line
 
 def main(argv: Optional[list[str]] = None):
+    """Command line entry point
+
+    - argv => sys.argv[1:]
+
+    """
     if argv is None:
         argv = sys.argv[1:]
+
     for line in fileinput.input(argv):
         # UX improvement by allowing commented imports during development
         if line.strip().startswith("#") or line.strip().startswith("//"):
