@@ -3,7 +3,19 @@ name = "get-jsonnet-dependencies"
 version = "0.1.0"
 description = "Extracts import dependencies from a Jsonnet file"
 authors = ["George Zhang <geetransit@gmail.com>"]
+homepage = "https://pypi.org/project/get-jsonnet-dependencies/"
+repository = "https://github.com/GeeTransit/get-jsonnet-dependencies"
+readme = "README.md"
 license = "MIT"
+classifiers = [
+	"Development Status :: 3 - Alpha",
+	"Intended Audience :: Developers",
+	"License :: OSI Approved :: MIT License",
+	"Operating System :: OS Independent",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3.9",
+	"Topic :: Software Development :: Build Tools",
+]
 packages = [
 	{ include = "get_jsonnet_dependencies.py" },
 ]
