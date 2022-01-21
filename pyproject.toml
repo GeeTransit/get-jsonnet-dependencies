@@ -4,9 +4,9 @@ version = "0.1.0"
 description = "Extracts import dependencies from a Jsonnet file"
 authors = ["George Zhang <geetransit@gmail.com>"]
 license = "MIT"
-
-[[tool.poetry.packages]]
-include = "get_jsonnet_dependencies.py"
+packages = [
+	{ include = "get_jsonnet_dependencies.py" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
