@@ -15,6 +15,7 @@ Note: Imports spanning multiple lines won't be found by this script.
 import sys
 import fileinput
 import re
+from typing import Optional
 
 # - Unescaping escape sequences
 
@@ -71,7 +72,7 @@ IMPORT_PATTERN = re.compile(
     flags=re.VERBOSE,
 )
 
-def extract_imports(string):
+def extract_imports(string: str):
     """Yields all import strings found
 
         >>> list(extract_imports("import 'sus'"))
@@ -89,7 +90,7 @@ def extract_imports(string):
 
 # - Command line
 
-def main(argv=None):
+def main(argv: Optional[list[str]] = None):
     if argv is None:
         argv = sys.argv[1:]
     for line in fileinput.input(argv):
